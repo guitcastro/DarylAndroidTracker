@@ -32,9 +32,6 @@ dependencies {
     }
 }
 
-group = project.BINTRAY_GROUP
-version = project.BINTRAY_VERSION
-
 task sourcesJar(type: Jar) {
     from android.sourceSets.main.java.srcDirs
     classifier = 'sources'
@@ -55,9 +52,13 @@ artifacts {
     archives sourcesJar
 }
 
+
+group = project.properties['BINTRAY_GROUP'] ?: 'com.appprova'
+version = project.properties['BINTRAY_VERSION'] ?: '1.0.0'
+
 bintray {
-    user = project.BINTRAY_USER
-    key = project.BINTRAY_PASSWORD
+    user = project.properties['BINTRAY_USER'] ?: 'test'
+    key = project.properties['BINTRAY_PASSWORD'] ?: 'test'
 
     configurations = ['archives']
 
