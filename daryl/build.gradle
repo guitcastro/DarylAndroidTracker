@@ -1,4 +1,5 @@
 apply plugin: 'com.android.library'
+apply plugin: 'com.jfrog.bintray'
 
 android {
     compileSdkVersion 24
@@ -28,4 +29,17 @@ dependencies {
     androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2.2'
     androidTestCompile 'com.android.support.test:runner:0.5'
     androidTestCompile 'com.android.support:support-annotations:24.0.0'
+}
+
+
+bintray {
+    user = project.BINTRAY_USER
+    key = project.BINTRAY_PASSWORD
+    pkg {
+        repo = 'generic'
+        name = 'gradle-project'
+        userOrg = 'bintray_user'
+        licenses = ['Apache-2.0']
+        vcsUrl = 'https://github.com/bintray/gradle-bintray-plugin.git'
+    }
 }
