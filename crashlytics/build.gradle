@@ -2,7 +2,6 @@ apply plugin: 'com.android.library'
 apply plugin: 'com.jfrog.bintray'
 apply plugin: 'com.github.dcendents.android-maven'
 
-
 android {
     compileSdkVersion 24
     buildToolsVersion "24.0.0"
@@ -26,11 +25,15 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile project(path: ':daryl')
     testCompile 'junit:junit:4.12'
+    compile('com.crashlytics.sdk.android:crashlytics:2.5.5@aar') {
+        transitive = true;
+    }
 }
 
-group=project.BINTRAY_GROUP
-version=project.BINTRAY_VERSION
+group = project.BINTRAY_GROUP
+version = project.BINTRAY_VERSION
 
 task sourcesJar(type: Jar) {
     from android.sourceSets.main.java.srcDirs
@@ -65,3 +68,4 @@ bintray {
         vcsUrl = 'https://github.com/guitcastro/DarylAndroidTracker'
     }
 }
+
