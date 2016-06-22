@@ -2,9 +2,6 @@ apply plugin: 'com.android.library'
 apply plugin: 'com.jfrog.bintray'
 apply plugin: 'com.github.dcendents.android-maven'
 
-group=project.BINTRAY_GROUP
-version=project.BINTRAY_VERSION
-
 android {
     compileSdkVersion 24
     buildToolsVersion "24.0.0"
@@ -51,15 +48,16 @@ dependencies {
     compile project(path: ':daryl')
     compile 'com.google.android.gms:play-services-analytics:9.0.2'
 
-
-
     testCompile 'junit:junit:4.12'
     testCompile 'org.mockito:mockito-all:1.10.19'
 }
 
+group = project.BINTRAY_GROUP ?: 'com.appprova'
+version = project.BINTRAY_VERSION ?: '1.0.0'
+
 bintray {
-    user = project.BINTRAY_USER
-    key = project.BINTRAY_PASSWORD
+    user = project.BINTRAY_USER ?: 'test'
+    key = project.BINTRAY_PASSWORD ?: 'test'
 
     configurations = ['archives']
 

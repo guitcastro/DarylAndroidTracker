@@ -29,9 +29,6 @@ dependencies {
     testCompile 'junit:junit:4.12'
 }
 
-group=project.BINTRAY_GROUP
-version=project.BINTRAY_VERSION
-
 task sourcesJar(type: Jar) {
     from android.sourceSets.main.java.srcDirs
     classifier = 'sources'
@@ -52,9 +49,12 @@ artifacts {
     archives sourcesJar
 }
 
+group = project.BINTRAY_GROUP ?: 'com.appprova'
+version = project.BINTRAY_VERSION ?: '1.0.0'
+
 bintray {
-    user = project.BINTRAY_USER
-    key = project.BINTRAY_PASSWORD
+    user = project.BINTRAY_USER ?: 'test'
+    key = project.BINTRAY_PASSWORD ?: 'test'
 
     configurations = ['archives']
 
