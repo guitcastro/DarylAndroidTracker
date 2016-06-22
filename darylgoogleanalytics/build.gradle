@@ -1,4 +1,9 @@
 apply plugin: 'com.android.library'
+apply plugin: 'com.jfrog.bintray'
+apply plugin: 'com.github.dcendents.android-maven'
+
+group=project.BINTRAY_GROUP
+version=project.BINTRAY_VERSION
 
 android {
     compileSdkVersion 24
@@ -21,6 +26,26 @@ android {
     }
 }
 
+task sourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier = 'sources'
+}
+
+task javadoc(type: Javadoc) {
+    source = android.sourceSets.main.java.srcDirs
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+artifacts {
+    archives javadocJar
+    archives sourcesJar
+}
+
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile project(path: ':daryl')
@@ -28,4 +53,18 @@ dependencies {
 
     testCompile 'junit:junit:4.12'
     testCompile 'org.mockito:mockito-all:1.10.19'
+}
+
+bintray {
+    user = project.BINTRAY_USER
+    key = project.BINTRAY_PASSWORD
+
+    configurations = ['archives']
+
+    pkg {
+        repo = 'maven'
+        name = project.name
+        licenses = ['MIT']
+        vcsUrl = 'https://github.com/guitcastro/DarylAndroidTracker'
+    }
 }
