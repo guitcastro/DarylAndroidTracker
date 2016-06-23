@@ -7,8 +7,10 @@ import org.junit.Test;
 import org.mockito.ArgumentCaptor;
 
 import java.util.HashMap;
-import java.util.Map;
 
+import static com.appprova.daryl.Constants.EVENT_ACTION;
+import static com.appprova.daryl.Constants.EVENT_CATEGORY;
+import static com.appprova.daryl.Constants.EVENT_LABEL;
 import static junit.framework.Assert.assertTrue;
 import static org.mockito.Matchers.anyMap;
 import static org.mockito.Mockito.mock;
@@ -30,18 +32,18 @@ public class GoogleAnalyticsTrackerTest {
     public void testLogEvent() {
         // Arrange
 
-        EventBuilder builder = new EventBuilder();
-        builder.setCategory("testCategory")
-                .setAction("testAction")
-                .setLabel("testLabel");
+        HashMap<String, Object> eventValue = new HashMap<>();
+        eventValue.put(EVENT_CATEGORY, "testCategory");
+        eventValue.put(EVENT_ACTION, "testAction");
+        eventValue.put(EVENT_LABEL, "testLabel");
         ArgumentCaptor<HashMap> event = ArgumentCaptor.forClass(HashMap.class);
+
         // Act
 
-        this.subject.logEvent(builder.get());
+        this.subject.logEvent(eventValue);
         // Assert
 
         verify(this.tracker).send(event.capture());
-        Map eventValue = event.getValue();
 
         assertTrue(eventValue.containsValue("testCategory"));
         assertTrue(eventValue.containsValue("testLabel"));
