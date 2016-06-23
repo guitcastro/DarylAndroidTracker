@@ -1,5 +1,5 @@
-# DarylAndroidTracker
-Use multiple analytics and other trackers in your Application easily [![codecov](https://codecov.io/gh/guitcastro/DarylAndroidTracker/branch/master/graph/badge.svg)](https://codecov.io/gh/guitcastro/DarylAndroidTracker)
+# DarylAndroidTracker [![codecov](https://codecov.io/gh/guitcastro/DarylAndroidTracker/branch/master/graph/badge.svg)](https://codecov.io/gh/guitcastro/DarylAndroidTracker)
+Use multiple analytics and other trackers in your Application easily 
 
 
 
