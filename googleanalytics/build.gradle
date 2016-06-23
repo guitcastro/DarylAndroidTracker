@@ -1,6 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'com.jfrog.bintray'
 apply plugin: 'com.github.dcendents.android-maven'
+apply plugin: 'jacoco-android'
 
 android {
     compileSdkVersion 24
@@ -12,11 +13,13 @@ android {
         versionCode 1
         versionName "1.0"
 
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
     }
     buildTypes {
+        debug {
+            testCoverageEnabled true
+        }
         release {
+            testCoverageEnabled true
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
@@ -67,4 +70,9 @@ bintray {
         licenses = ['MIT']
         vcsUrl = 'https://github.com/guitcastro/DarylAndroidTracker'
     }
+}
+
+tasks.withType(Test) {
+    systemProperties = System.properties
+    systemProperties['user.dir'] = workingDir
 }
