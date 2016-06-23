@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class EventBuilder {
 
-    final Map<String, Object> event;
+    private final Map<String, Object> event;
 
     public EventBuilder() {
         event = new HashMap<>();
