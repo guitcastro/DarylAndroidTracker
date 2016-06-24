@@ -11,7 +11,7 @@ public class EventBuilderTest {
 
     @Test
     public void testSetCategory() {
-        EventBuilder eventBuilder = new EventBuilder();
+        EventBuilder eventBuilder = new EventBuilder("");
         eventBuilder.setCategory("testCategory");
 
         assertEquals("testCategory", eventBuilder.get().get(Constants.EVENT_CATEGORY));
@@ -19,7 +19,7 @@ public class EventBuilderTest {
 
     @Test
     public void testSetAction() {
-        EventBuilder eventBuilder = new EventBuilder();
+        EventBuilder eventBuilder = new EventBuilder("");
         eventBuilder.setAction("testAction");
 
         assertEquals("testAction", eventBuilder.get().get(Constants.EVENT_ACTION));
@@ -27,7 +27,7 @@ public class EventBuilderTest {
 
     @Test
     public void testSetLabel() {
-        EventBuilder eventBuilder = new EventBuilder();
+        EventBuilder eventBuilder = new EventBuilder("");
         eventBuilder.setLabel("testLabel");
 
         assertEquals("testLabel", eventBuilder.get().get(Constants.EVENT_LABEL));
@@ -35,7 +35,7 @@ public class EventBuilderTest {
 
     @Test
     public void testSetCustomProperty() {
-        EventBuilder eventBuilder = new EventBuilder();
+        EventBuilder eventBuilder = new EventBuilder("");
         eventBuilder.setProperty("customProperty", "customValue");
 
         assertEquals("customValue", eventBuilder.get().get("customProperty"));

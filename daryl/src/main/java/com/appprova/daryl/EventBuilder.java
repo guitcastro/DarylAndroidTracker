@@ -7,8 +7,9 @@ public class EventBuilder {
 
     private final Map<String, Object> event;
 
-    public EventBuilder() {
+    public EventBuilder(final String eventName) {
         event = new HashMap<>();
+        event.put(Constants.EVENT_NAME, eventName);
     }
 
     public EventBuilder setCategory(String category) {

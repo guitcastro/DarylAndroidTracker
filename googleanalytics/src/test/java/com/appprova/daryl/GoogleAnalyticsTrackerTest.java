@@ -45,6 +45,7 @@ public class GoogleAnalyticsTrackerTest {
 
         verify(this.tracker).send(event.capture());
 
+        eventValue = event.getValue();
         assertTrue(eventValue.containsValue("testCategory"));
         assertTrue(eventValue.containsValue("testLabel"));
         assertTrue(eventValue.containsValue("testAction"));
