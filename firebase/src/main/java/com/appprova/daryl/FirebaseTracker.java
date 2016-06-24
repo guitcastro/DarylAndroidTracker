@@ -3,6 +3,7 @@ package com.appprova.daryl;
 import android.os.Bundle;
 
 import com.google.firebase.analytics.FirebaseAnalytics;
+import com.google.firebase.crash.FirebaseCrash;
 
 import java.util.Map;
 
@@ -19,6 +20,7 @@ public class FirebaseTracker implements TrackerAdapter {
         final Bundle bundle = new Bundle();
         bundle.putString("pageName", name);
         this.tracker.logEvent("pageView", bundle);
+        FirebaseCrash.log("pageView: " + name);
     }
 
     @Override
@@ -32,6 +34,7 @@ public class FirebaseTracker implements TrackerAdapter {
         }
 
         this.tracker.logEvent(eventName, bundle);
+        FirebaseCrash.log(EventToStringConverter.toString(eventData));
     }
 
     @Override
@@ -42,5 +45,10 @@ public class FirebaseTracker implements TrackerAdapter {
             default:
                 this.tracker.setUserProperty(key, value.toString());
         }
+    }
+
+    @Override
+    public void logException(Throwable e) {
+        FirebaseCrash.report(e);
     }
 }

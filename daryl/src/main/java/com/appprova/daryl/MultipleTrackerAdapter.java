@@ -36,4 +36,11 @@ public class MultipleTrackerAdapter implements TrackerAdapter {
             tracker.setUserProperty(key, value);
         }
     }
+
+    @Override
+    public void logException(Throwable e) {
+        for (TrackerAdapter tracker : this.trackers) {
+            tracker.logException(e);
+        }
+    }
 }

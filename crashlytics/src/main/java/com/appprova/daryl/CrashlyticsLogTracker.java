@@ -13,11 +13,7 @@ public class CrashlyticsLogTracker implements TrackerAdapter {
 
     @Override
     public void logEvent(Map<String, Object> eventData) {
-        StringBuilder builder = new StringBuilder("event: ");
-        for (Map.Entry<String, Object> entry : eventData.entrySet()) {
-            builder.append(entry.getKey()).append(" : ").append(entry.getValue()).append("\n");
-        }
-        Crashlytics.log(builder.toString());
+        Crashlytics.log(EventToStringConverter.toString(eventData));
     }
 
     @Override
@@ -30,5 +26,10 @@ public class CrashlyticsLogTracker implements TrackerAdapter {
             case Constants.USER_PROPERTY_NAME:
                 Crashlytics.setUserName(value.toString());
         }
+    }
+
+    @Override
+    public void logException(Throwable e) {
+        Crashlytics.logException(e);
     }
 }

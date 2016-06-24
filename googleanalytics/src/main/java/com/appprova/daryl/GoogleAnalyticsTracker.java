@@ -32,6 +32,12 @@ public class GoogleAnalyticsTracker implements TrackerAdapter {
     public void setUserProperty(String key, Object value) {
     }
 
+    @Override
+    public void logException(Throwable e) {
+        tracker.send(new HitBuilders.ExceptionBuilder()
+                .setDescription(e.toString()).build());
+    }
+
     private void logEvent(String category, String action, String label, long value) {
         tracker.send(new HitBuilders.EventBuilder()
                 .setCategory(category)
