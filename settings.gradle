@@ -1,1 +1,1 @@
-include ':app', ':daryl', ':googleanalytics', ':crashlytics', ':firebase'
+include ':app', ':daryl', ':googleanalytics', ':crashlytics', ':firebase', ':dito'

@@ -11,6 +11,7 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/crashlytics" />
             <option value="$PROJECT_DIR$/daryl" />
+            <option value="$PROJECT_DIR$/dito" />
             <option value="$PROJECT_DIR$/firebase" />
             <option value="$PROJECT_DIR$/googleanalytics" />
           </set>
