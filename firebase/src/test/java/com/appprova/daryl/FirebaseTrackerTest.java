@@ -3,10 +3,12 @@ package com.appprova.daryl;
 import android.os.Bundle;
 
 import com.google.firebase.analytics.FirebaseAnalytics;
+import com.google.firebase.crash.FirebaseCrash;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.powermock.api.mockito.PowerMockito;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
 
@@ -20,7 +22,7 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
 @RunWith(PowerMockRunner.class)
-@PrepareForTest(FirebaseAnalytics.class)
+@PrepareForTest({FirebaseAnalytics.class, FirebaseCrash.class})
 public class FirebaseTrackerTest {
 
     private FirebaseTracker subject;
@@ -28,6 +30,7 @@ public class FirebaseTrackerTest {
 
     @Before
     public void setUp() {
+        PowerMockito.mockStatic(FirebaseCrash.class);
         this.tracker = mock(FirebaseAnalytics.class);
         this.subject = new FirebaseTracker(this.tracker);
     }
@@ -35,10 +38,6 @@ public class FirebaseTrackerTest {
     @SuppressWarnings("unchecked")
     @Test
     public void testLogEvent() {
-
-        if (true) {
-            return; // TODO Find out why jacoco is breaking the tests
-        }
 
         // Arrange
 
@@ -55,9 +54,6 @@ public class FirebaseTrackerTest {
     @SuppressWarnings("unchecked")
     @Test
     public void testTrackPageView() {
-        if (true) {
-            return; // TODO Find out why jacoco is breaking the tests
-        }
 
         // Act
         this.subject.logPageView("test");
