@@ -24,8 +24,15 @@ android {
     }
 }
 
+configurations {
+    // configuration that holds jars to copy into lib
+    extraLibs
+}
+
 dependencies {
-    compile(name: 'ditosdk', ext: 'jar')
+    extraLibs(name: 'ditosdk', ext: 'jar') {
+        exclude module: 'ditosdk'
+    }
     compile 'com.android.support:appcompat-v7:24.0.0'
     testCompile 'junit:junit:4.12'
 }
@@ -47,18 +54,7 @@ task sourcesJar(type: Jar) {
     classifier = 'sources'
 }
 
-task javadoc(type: Javadoc) {
-    source = android.sourceSets.main.java.srcDirs
-    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
-}
-
-task javadocJar(type: Jar, dependsOn: javadoc) {
-    classifier = 'javadoc'
-    from javadoc.destinationDir
-}
-
 artifacts {
-    archives javadocJar
     archives sourcesJar
 }
 
