@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="daryl.appprova.com.daryl">
+    package="com.appprova.daryl.googleanalytics">
 
     <application android:allowBackup="true" android:label="@string/app_name"
         android:supportsRtl="true">
