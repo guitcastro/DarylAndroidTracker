@@ -34,6 +34,7 @@ public class DitoTracker implements TrackerAdapter {
         switch (key) {
             case USER_PROPERTY_ID:
                 this.userId = value.toString();
+
         }
     }
 

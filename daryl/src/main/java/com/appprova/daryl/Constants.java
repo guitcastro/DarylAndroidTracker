@@ -1,13 +1,13 @@
 package com.appprova.daryl;
 
 public class Constants {
-    public static final String EVENT_NAME = "Name";
-    public static final String EVENT_CATEGORY = "Category";
-    public static final String EVENT_LABEL = "Label";
-    public static final String EVENT_ACTION = "Action";
-    public static final String EVENT_VALUE = "Value";
+    public static final String EVENT_NAME = "name";
+    public static final String EVENT_CATEGORY = "category";
+    public static final String EVENT_LABEL = "label";
+    public static final String EVENT_ACTION = "action";
+    public static final String EVENT_VALUE = "value";
 
-    public static final String USER_PROPERTY_NAME = "Name";
-    public static final String USER_PROPERTY_EMAIL = "Email";
-    public static final String USER_PROPERTY_ID = "Id";
+    public static final String USER_PROPERTY_NAME = "name";
+    public static final String USER_PROPERTY_EMAIL = "email";
+    public static final String USER_PROPERTY_ID = "id";
 }
