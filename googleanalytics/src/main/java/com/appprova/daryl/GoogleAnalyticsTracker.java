@@ -20,7 +20,7 @@ public class GoogleAnalyticsTracker implements TrackerAdapter {
     }
 
     @Override
-    public void logEvent(Map<String, Object> eventData) {
+    public void logEvent(Map<String, ?> eventData) {
         final String category = (String)eventData.get(Constants.EVENT_CATEGORY);
         final String action = (String)eventData.get(Constants.EVENT_ACTION);
         final String label = (String)eventData.get(Constants.EVENT_LABEL);

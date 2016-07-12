@@ -12,7 +12,7 @@ public class CrashlyticsLogTracker implements TrackerAdapter {
     }
 
     @Override
-    public void logEvent(Map<String, Object> eventData) {
+    public void logEvent(Map<String, ?> eventData) {
         Crashlytics.log(EventToStringConverter.toString(eventData));
     }
 

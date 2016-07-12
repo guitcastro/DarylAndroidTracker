@@ -24,12 +24,12 @@ public class FirebaseTracker implements TrackerAdapter {
     }
 
     @Override
-    public void logEvent(Map<String, Object> eventData) {
+    public void logEvent(Map<String, ?> eventData) {
         String eventName = (String) eventData.get(Constants.EVENT_NAME);
         eventData.remove(Constants.EVENT_NAME);
 
         Bundle bundle = new Bundle();
-        for (Map.Entry<String, Object> entry : eventData.entrySet()) {
+        for (Map.Entry<String, ?> entry : eventData.entrySet()) {
             bundle.putString(entry.getKey(), entry.getValue().toString());
         }
 

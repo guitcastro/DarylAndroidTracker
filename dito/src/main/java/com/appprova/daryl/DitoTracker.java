@@ -2,6 +2,7 @@ package com.appprova.daryl;
 
 import android.util.Log;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import br.com.dito.ditosdk.DitoSDK;
@@ -12,15 +13,22 @@ import static com.appprova.daryl.Constants.USER_PROPERTY_ID;
 
 public class DitoTracker implements TrackerAdapter {
 
+    final private Map<String, Object> userProperties;
     private String userId;
 
-    @Override
-    public void logPageView(String name) {
-
+    public DitoTracker(Map<String, Object> userProperties) {
+        this.userProperties = userProperties;
     }
 
     @Override
-    public void logEvent(Map<String, Object> eventData) {
+    public void logPageView(String name) {
+        Map<String, String> event = new HashMap<>();
+        event.put(Constants.EVENT_ACTION, "pageView: " + name);
+        this.logEvent(event);
+    }
+
+    @Override
+    public void logEvent(Map<String, ?> eventData) {
         DitoCredentials credentials = new DitoCredentials(this.userId, null, null, null, null);
         try {
             DitoSDK.track(credentials, eventData, null);
@@ -34,7 +42,8 @@ public class DitoTracker implements TrackerAdapter {
         switch (key) {
             case USER_PROPERTY_ID:
                 this.userId = value.toString();
-
+            default:
+                this.userProperties.put(key, value);
         }
     }
 

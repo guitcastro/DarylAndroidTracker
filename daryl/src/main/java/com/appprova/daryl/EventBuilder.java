@@ -32,6 +32,11 @@ public class EventBuilder {
         return this;
     }
 
+    public EventBuilder setProperties(Map<String, Object> properties) {
+        event.putAll(properties);
+        return this;
+    }
+
     public Map<String, Object> get() {
         return this.event;
     }

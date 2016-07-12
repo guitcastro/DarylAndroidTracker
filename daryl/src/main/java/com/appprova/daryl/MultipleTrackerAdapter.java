@@ -24,7 +24,7 @@ public class MultipleTrackerAdapter implements TrackerAdapter {
     }
 
     @Override
-    public void logEvent(Map<String, Object> eventData) {
+    public void logEvent(Map<String, ?> eventData) {
         for (TrackerAdapter tracker : this.trackers) {
             tracker.logEvent(eventData);
         }
