@@ -30,7 +30,9 @@ public class FirebaseTracker implements TrackerAdapter {
 
         Bundle bundle = new Bundle();
         for (Map.Entry<String, ?> entry : eventData.entrySet()) {
-            bundle.putString(entry.getKey(), entry.getValue().toString());
+            if (entry.getValue() != null) {
+                bundle.putString(entry.getKey(), entry.getValue().toString());
+            }
         }
 
         this.tracker.logEvent(eventName, bundle);
