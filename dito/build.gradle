@@ -1,11 +1,10 @@
 apply plugin: 'com.android.library'
 apply plugin: 'com.jfrog.bintray'
-apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'jacoco-android'
 
 android {
     compileSdkVersion 24
-    buildToolsVersion "24.0.0"
+    buildToolsVersion "24.0.1"
 
     defaultConfig {
         minSdkVersion 10
@@ -33,7 +32,6 @@ dependencies {
     extraLibs(name: 'ditosdk', ext: 'jar') {
         exclude module: 'ditosdk'
     }
-    compile 'com.android.support:appcompat-v7:24.0.0'
     testCompile 'junit:junit:4.12'
 }
 

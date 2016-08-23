@@ -4,11 +4,13 @@ import android.util.Log;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 import br.com.dito.ditosdk.DitoSDK;
 import br.com.dito.ditosdk.exception.DitoSDKException;
 import br.com.dito.ditosdk.model.DitoCredentials;
 
+import static com.appprova.daryl.Constants.EVENT_ACTION;
 import static com.appprova.daryl.Constants.USER_PROPERTY_ID;
 
 public class DitoTracker implements TrackerAdapter {
@@ -22,14 +24,17 @@ public class DitoTracker implements TrackerAdapter {
 
     @Override
     public void logPageView(String name) {
-        Map<String, String> event = new HashMap<>();
+        Map<String, Object> event = new HashMap<>();
         event.put(Constants.EVENT_ACTION, "pageView: " + name);
         this.logEvent(event);
     }
 
     @Override
-    public void logEvent(Map<String, ?> eventData) {
+    public void logEvent(final Map<String, Object> eventData) {
         DitoCredentials credentials = new DitoCredentials(this.userId, null, null, null, null);
+        if (!eventData.containsKey("data")) {
+            eventData.put("data", new HashMap<>(eventData));
+        }
         try {
             DitoSDK.track(credentials, eventData, null);
         } catch (DitoSDKException e) {
