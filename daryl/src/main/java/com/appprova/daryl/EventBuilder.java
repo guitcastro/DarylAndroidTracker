@@ -33,7 +33,9 @@ public class EventBuilder {
     }
 
     public EventBuilder setProperties(Map<String, Object> properties) {
-        event.putAll(properties);
+        if (properties != null) {
+            event.putAll(properties);
+        }
         return this;
     }
 
