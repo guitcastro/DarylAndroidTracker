@@ -50,7 +50,7 @@ public class FirebaseTracker implements TrackerAdapter {
     }
 
     private String sanitize(final Object value) {
-        return value.toString().replace("-", "_");
+        return value.toString().replace("-", "_").replace(" ", "_");
     }
 
     @Override
