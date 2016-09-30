@@ -24,9 +24,10 @@ public class DitoTracker implements TrackerAdapter {
 
     @Override
     public void logPageView(String name) {
-        Map<String, Object> event = new HashMap<>();
-        event.put(Constants.EVENT_ACTION, "pageView: " + name);
-        this.logEvent(event);
+        //Comentado provisoriamente
+//        Map<String, Object> event = new HashMap<>();
+//        event.put(Constants.EVENT_ACTION, "pageView: " + name);
+//        this.logEvent(event);
     }
 
     @Override

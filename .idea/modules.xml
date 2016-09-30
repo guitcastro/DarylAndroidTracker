@@ -3,11 +3,18 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/DarylAndroidTracker.iml" filepath="$PROJECT_DIR$/DarylAndroidTracker.iml" />
+      <module fileurl="file://$PROJECT_DIR$/DarylAndroidTracker.iml" filepath="$PROJECT_DIR$/DarylAndroidTracker.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/crashlytics/crashlytics.iml" filepath="$PROJECT_DIR$/crashlytics/crashlytics.iml" />
+      <module fileurl="file://$PROJECT_DIR$/crashlytics/crashlytics.iml" filepath="$PROJECT_DIR$/crashlytics/crashlytics.iml" />
+      <module fileurl="file://$PROJECT_DIR$/daryl/daryl.iml" filepath="$PROJECT_DIR$/daryl/daryl.iml" />
       <module fileurl="file://$PROJECT_DIR$/daryl/daryl.iml" filepath="$PROJECT_DIR$/daryl/daryl.iml" />
       <module fileurl="file://$PROJECT_DIR$/dito/dito.iml" filepath="$PROJECT_DIR$/dito/dito.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dito/dito.iml" filepath="$PROJECT_DIR$/dito/dito.iml" />
       <module fileurl="file://$PROJECT_DIR$/firebase/firebase.iml" filepath="$PROJECT_DIR$/firebase/firebase.iml" />
+      <module fileurl="file://$PROJECT_DIR$/firebase/firebase.iml" filepath="$PROJECT_DIR$/firebase/firebase.iml" />
+      <module fileurl="file://$PROJECT_DIR$/googleanalytics/googleanalytics.iml" filepath="$PROJECT_DIR$/googleanalytics/googleanalytics.iml" />
       <module fileurl="file://$PROJECT_DIR$/googleanalytics/googleanalytics.iml" filepath="$PROJECT_DIR$/googleanalytics/googleanalytics.iml" />
     </modules>
   </component>
