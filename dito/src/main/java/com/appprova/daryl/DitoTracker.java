@@ -2,6 +2,7 @@ package com.appprova.daryl;
 
 import android.util.Log;
 
+import br.com.dito.ditosdk.interfaces.DitoSDKCallback;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -23,12 +24,7 @@ public class DitoTracker implements TrackerAdapter {
     }
 
     @Override
-    public void logPageView(String name) {
-        //Comentado provisoriamente
-//        Map<String, Object> event = new HashMap<>();
-//        event.put(Constants.EVENT_ACTION, "pageView: " + name);
-//        this.logEvent(event);
-    }
+    public void logPageView(String name) {}
 
     @Override
     public void logEvent(final Map<String, Object> eventData) {
@@ -37,7 +33,15 @@ public class DitoTracker implements TrackerAdapter {
             eventData.put("data", new HashMap<>(eventData));
         }
         try {
-            DitoSDK.track(credentials, eventData, null);
+            DitoSDK.track(credentials, eventData, new DitoSDKCallback() {
+                @Override public void onSuccess(String s) {
+                    Log.i(getClass().getSimpleName(), "event logged with success, data: " + s);
+                }
+
+                @Override public void onError(Exception e) {
+                    Log.e(getClass().getSimpleName(), "fail to log event: " + eventData, e);
+                }
+            });
         } catch (DitoSDKException e) {
             Log.e("DitoTracker", "fail to track event", e);
         }
