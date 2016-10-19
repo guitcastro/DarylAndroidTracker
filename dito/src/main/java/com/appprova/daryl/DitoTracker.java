@@ -28,7 +28,7 @@ public class DitoTracker implements TrackerAdapter {
 
     @Override
     public void logEvent(final Map<String, Object> eventData) {
-        Log.i("ditotracker", "enter log event method");
+        Log.i("ditotracker", "enter log event method" + eventData);
         DitoCredentials credentials = new DitoCredentials(this.userId, null, null, null, null);
         if (!eventData.containsKey("data")) {
             eventData.put("data", new HashMap<>(eventData));
