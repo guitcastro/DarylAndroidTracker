@@ -28,6 +28,7 @@ public class DitoTracker implements TrackerAdapter {
 
     @Override
     public void logEvent(final Map<String, Object> eventData) {
+        Log.i("ditotracker", "enter log event method");
         DitoCredentials credentials = new DitoCredentials(this.userId, null, null, null, null);
         if (!eventData.containsKey("data")) {
             eventData.put("data", new HashMap<>(eventData));
@@ -35,15 +36,15 @@ public class DitoTracker implements TrackerAdapter {
         try {
             DitoSDK.track(credentials, eventData, new DitoSDKCallback() {
                 @Override public void onSuccess(String s) {
-                    Log.i(getClass().getSimpleName(), "event logged with success, data: " + s);
+                    Log.i("ditotracker", "event logged with success, data: " + s);
                 }
 
                 @Override public void onError(Exception e) {
-                    Log.e(getClass().getSimpleName(), "fail to log event: " + eventData, e);
+                    Log.e("ditotracker", "fail to log event: " + eventData, e);
                 }
             });
         } catch (DitoSDKException e) {
-            Log.e("DitoTracker", "fail to track event", e);
+            Log.e("ditotracker", "fail to track event", e);
         }
     }
 
