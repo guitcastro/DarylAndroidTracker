@@ -30,7 +30,7 @@ public class DitoTrackerTest {
         PowerMockito.mockStatic(DitoSDK.class);
         this.subject = new DitoTracker(userProperties);
     }
-    
+
     @Test
     public void logEvent() throws Exception {
 

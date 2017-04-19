@@ -32,6 +32,7 @@ tasks.withType(Test) {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
+    testCompile 'org.mockito:mockito-all:1.10.19'
     testCompile 'junit:junit:4.12'
 }
 
