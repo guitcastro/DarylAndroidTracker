@@ -22,12 +22,17 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    testOptions {
+        unitTests.returnDefaultValues = true
+    }
 }
 
 dependencies {
     compile project(path: ':daryl')
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.facebook.android:facebook-android-sdk:[4,5)'
+    testCompile 'org.mockito:mockito-all:1.10.19'
     testCompile 'junit:junit:4.12'
 }
 task sourcesJar(type: Jar) {
