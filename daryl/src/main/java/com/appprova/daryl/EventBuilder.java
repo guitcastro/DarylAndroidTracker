@@ -32,6 +32,11 @@ public class EventBuilder {
         return this;
     }
 
+    public EventBuilder setCampaignUrl(String url) {
+        event.put(Constants.EVENT_CAMPAIGN_URL, url);
+        return this;
+    }
+
     public EventBuilder setProperties(Map<String, Object> properties) {
         if (properties != null) {
             event.putAll(properties);

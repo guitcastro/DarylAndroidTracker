@@ -24,8 +24,9 @@ public class GoogleAnalyticsTracker implements TrackerAdapter {
         final String category = (String)eventData.get(Constants.EVENT_CATEGORY);
         final String action = (String)eventData.get(Constants.EVENT_ACTION);
         final String label = (String)eventData.get(Constants.EVENT_LABEL);
+        final String campaignUrl = (String)eventData.get(Constants.EVENT_CAMPAIGN_URL);
         final Long value = (Long)eventData.get(Constants.EVENT_VALUE);
-        this.logEvent(category, action, label, value == null ? 0 : value);
+        this.logEvent(category, action, label, value == null ? 0 : value, campaignUrl);
     }
 
     @Override
@@ -38,8 +39,9 @@ public class GoogleAnalyticsTracker implements TrackerAdapter {
                 .setDescription(e.toString()).build());
     }
 
-    private void logEvent(String category, String action, String label, long value) {
+    private void logEvent(String category, String action, String label, long value, String campaignUrl) {
         tracker.send(new HitBuilders.EventBuilder()
+                .setCampaignParamsFromUrl(campaignUrl)
                 .setCategory(category)
                 .setAction(action)
                 .setLabel(label)
