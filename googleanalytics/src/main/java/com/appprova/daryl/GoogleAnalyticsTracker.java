@@ -40,12 +40,14 @@ public class GoogleAnalyticsTracker implements TrackerAdapter {
     }
 
     private void logEvent(String category, String action, String label, long value, String campaignUrl) {
-        tracker.send(new HitBuilders.EventBuilder()
-                .setCampaignParamsFromUrl(campaignUrl)
+        HitBuilders.EventBuilder builder = new HitBuilders.EventBuilder()
                 .setCategory(category)
                 .setAction(action)
                 .setLabel(label)
-                .setValue(value)
-                .build());
+                .setValue(value);
+        if (campaignUrl != null) {
+            builder.setCampaignParamsFromUrl(campaignUrl);
+        }
+        tracker.send(builder.build());
     }
 }
