@@ -17,7 +17,7 @@ public class CrashlyticsLogTracker implements TrackerAdapter {
     }
 
     @Override
-    public void setUserProperty(String key, Object value) {
+        public void setUserProperty(String key, Object value) {
         switch (key) {
             case Constants.USER_PROPERTY_EMAIL:
                 Crashlytics.setUserEmail(value.toString());
