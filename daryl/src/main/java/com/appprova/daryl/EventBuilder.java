@@ -27,7 +27,7 @@ public class EventBuilder {
         return this;
     }
 
-    public EventBuilder setProperty(String key, String value) {
+    public EventBuilder setProperty(String key, Object value) {
         event.put(key, value);
         return this;
     }
