@@ -72,7 +72,7 @@ After all trackers are registered you can just use the multiple tracker to track
 #### Tracking event
 
 ```
-trackAdaper.logEvent(new EventBuilder("event name")
+trackerAdapter.logEvent(new EventBuilder("event name")
                 .setCategory("event category")
                 .setAction("event action")
                 .setProperty("custom property", "property value")         
@@ -82,7 +82,7 @@ trackAdaper.logEvent(new EventBuilder("event name")
 #### Tracking page view
 
 ```
-trackAdaper.logPageView("page name");
+trackerAdapter.logPageView("page name");
 ```
 
 #### Tracking exceptions
@@ -90,7 +90,7 @@ trackAdaper.logPageView("page name");
 Avaibles for : Firebase, CrashlyticsLog and Google Analytics
 
 ```
-trackAdaper.logException(new Exeption("somthing went wrong"));
+trackerAdapter.logException(new Exeption("somthing went wrong"));
 ```
 
 #### Logging user properties
@@ -98,7 +98,7 @@ trackAdaper.logException(new Exeption("somthing went wrong"));
 Avaibles for : Firebase, CrashlyticsLog
 
 ```
-trackAdaper.setUserProperty(Constants.USER_PROPERTY_EMAIL, "example@gmail.com");
+trackerAdapter.setUserProperty(Constants.USER_PROPERTY_EMAIL, "example@gmail.com");
 ```
 
 ## Creating custom tracker
