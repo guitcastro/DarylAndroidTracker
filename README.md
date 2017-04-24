@@ -6,7 +6,7 @@ Use multiple analytics and other trackers in your Application easily
 Just added the necessary SDKs to your gradle file:
 
 ```
-def darylVersion = '0.0.40'
+def darylVersion = '0.0.48'
 
 compile "com.appprova.daryl:daryl:$darylVersion"
 compile "com.appprova.daryl:googleanalytics:$darylVersion"
