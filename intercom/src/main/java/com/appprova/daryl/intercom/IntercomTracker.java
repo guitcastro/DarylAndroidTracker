@@ -14,12 +14,14 @@ public class IntercomTracker implements TrackerAdapter {
 
     @Override
     public void logPageView(String name) {
-
     }
 
     @Override
     public void logEvent(Map<String, Object> eventData) {
+        String eventName = (String) eventData.get(Constants.EVENT_NAME);
+        eventData.remove(Constants.EVENT_NAME);
 
+        Intercom.client().logEvent(eventName, eventData);
     }
 
     @Override
@@ -42,6 +44,5 @@ public class IntercomTracker implements TrackerAdapter {
 
     @Override
     public void logException(Throwable e) {
-
     }
 }
