@@ -13,10 +13,12 @@
       <module fileurl="file://$PROJECT_DIR$/dito/dito.iml" filepath="$PROJECT_DIR$/dito/dito.iml" />
       <module fileurl="file://$PROJECT_DIR$/dito/dito.iml" filepath="$PROJECT_DIR$/dito/dito.iml" />
       <module fileurl="file://$PROJECT_DIR$/facebook/facebook.iml" filepath="$PROJECT_DIR$/facebook/facebook.iml" />
+      <module fileurl="file://$PROJECT_DIR$/facebook/facebook.iml" filepath="$PROJECT_DIR$/facebook/facebook.iml" />
       <module fileurl="file://$PROJECT_DIR$/firebase/firebase.iml" filepath="$PROJECT_DIR$/firebase/firebase.iml" />
       <module fileurl="file://$PROJECT_DIR$/firebase/firebase.iml" filepath="$PROJECT_DIR$/firebase/firebase.iml" />
       <module fileurl="file://$PROJECT_DIR$/googleanalytics/googleanalytics.iml" filepath="$PROJECT_DIR$/googleanalytics/googleanalytics.iml" />
       <module fileurl="file://$PROJECT_DIR$/googleanalytics/googleanalytics.iml" filepath="$PROJECT_DIR$/googleanalytics/googleanalytics.iml" />
+      <module fileurl="file://$PROJECT_DIR$/intercom/intercom.iml" filepath="$PROJECT_DIR$/intercom/intercom.iml" />
     </modules>
   </component>
 </project>
