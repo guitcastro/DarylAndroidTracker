@@ -1,6 +1,15 @@
 # DarylAndroidTracker [![codecov](https://codecov.io/gh/guitcastro/DarylAndroidTracker/branch/master/graph/badge.svg)](https://codecov.io/gh/guitcastro/DarylAndroidTracker)
 Use multiple analytics and other trackers in your Application easily 
 
+## Supported trackers:
+
+* Google Analytics
+* Crashlytics
+* Firebase
+* Facebook
+* Dito
+* Intercom
+
 ## Installing 
 
 Just added the necessary SDKs to your gradle file:
@@ -14,6 +23,7 @@ compile "com.appprova.daryl:crashlytics:$darylVersion"
 compile "com.appprova.daryl:firebase:$darylVersion"
 compile "com.appprova.daryl:facebook:$darylVersion"
 compile "com.appprova.daryl:dito:$darylVersion"
+compile "com.appprova.daryl:intercom:$darylVersion"
 ```
 
 ## Usages instructions
@@ -50,6 +60,12 @@ TrackerAdapter crashlyticsLogTracker = new CrashlyticsLogTracker();
 TrackerAdapter facebookTracker = new FacebookTracker(AppEventsLogger.newLogger(context.getApplicationContext()));
 ```
 
+#### Intercom
+
+```
+TrackerAdapter intercomTracker = new IntercomTracker();
+```
+
 ### Registering multiple trackers
 
 ```
@@ -58,7 +74,7 @@ trackerAdapter.addTracker(googleAnalyticsTracker);
         trackerAdapter.addTracker(ditoTracker);
         trackerAdapter.addTracker(firebaseTracker);
         trackerAdapter.addTracker(facebookTracker);
-
+        trackerAdapter.addTracker(intercomTracker);
         if (!BuildConfig.DEBUG) {
             trackerAdapter.addTracker(crashlyticsLogTracker);
         }
