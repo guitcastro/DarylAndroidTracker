@@ -6,6 +6,7 @@ import com.appprova.daryl.Constants;
 import com.appprova.daryl.TrackerAdapter;
 import com.facebook.appevents.AppEventsLogger;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class FacebookTracker implements TrackerAdapter {
@@ -23,11 +24,12 @@ public class FacebookTracker implements TrackerAdapter {
 
     @Override
     public void logEvent(Map<String, Object> eventData) {
-        String eventName = (String) eventData.get(Constants.EVENT_NAME);
-        eventData.remove(Constants.EVENT_NAME);
+        final Map<String, Object> eventDataCopy = new HashMap<>(eventData);
+        String eventName = (String) eventDataCopy.get(Constants.EVENT_NAME);
+        eventDataCopy.remove(Constants.EVENT_NAME);
 
         Bundle bundle = new Bundle();
-        for (Map.Entry<String, ?> entry : eventData.entrySet()) {
+        for (Map.Entry<String, ?> entry : eventDataCopy.entrySet()) {
             if (entry.getValue() != null) {
                 bundle.putString(entry.getKey(), entry.getValue().toString());
             }

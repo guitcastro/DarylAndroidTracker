@@ -5,6 +5,7 @@ import android.os.Bundle;
 import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.crash.FirebaseCrash;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class FirebaseTracker implements TrackerAdapter {
@@ -24,19 +25,20 @@ public class FirebaseTracker implements TrackerAdapter {
     }
 
     @Override
-    public void logEvent(Map<String, Object> eventData) {
-        String eventName = (String) eventData.get(Constants.EVENT_NAME);
-        eventData.remove(Constants.EVENT_NAME);
+    public void logEvent(final Map<String, Object> eventData) {
+        final Map<String, Object> eventDataCopy = new HashMap<>(eventData);
+        String eventName = (String) eventDataCopy.get(Constants.EVENT_NAME);
+        eventDataCopy.remove(Constants.EVENT_NAME);
 
         Bundle bundle = new Bundle();
-        for (Map.Entry<String, ?> entry : eventData.entrySet()) {
+        for (Map.Entry<String, ?> entry : eventDataCopy.entrySet()) {
             if (entry.getValue() != null) {
                 bundle.putString(entry.getKey(), this.sanitize(entry.getValue()));
             }
         }
 
         this.tracker.logEvent(this.sanitize(eventName), bundle);
-        FirebaseCrash.log(EventToStringConverter.toString(eventData));
+        FirebaseCrash.log(EventToStringConverter.toString(eventDataCopy));
     }
 
     @Override
@@ -50,7 +52,10 @@ public class FirebaseTracker implements TrackerAdapter {
     }
 
     private String sanitize(final Object value) {
-        return ("" + value).replace("-", "_").replace(" ", "_");
+        return ("" + value)
+                .replace("/", "_")
+                .replace("-", "_")
+                .replace(" ", "_");
     }
 
     @Override

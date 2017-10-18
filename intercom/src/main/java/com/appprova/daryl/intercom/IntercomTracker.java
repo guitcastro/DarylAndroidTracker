@@ -4,6 +4,7 @@ package com.appprova.daryl.intercom;
 import com.appprova.daryl.Constants;
 import com.appprova.daryl.TrackerAdapter;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import io.intercom.android.sdk.Intercom;
@@ -18,11 +19,12 @@ public class IntercomTracker implements TrackerAdapter {
     }
 
     @Override
-    public void logEvent(Map<String, Object> eventData) {
-        String eventName = (String) eventData.get(Constants.EVENT_NAME);
-        eventData.remove(Constants.EVENT_NAME);
+    public void logEvent(final Map<String, Object> eventData) {
+        final Map<String, Object> eventDataCopy = new HashMap<>(eventData);
+        String eventName = (String) eventDataCopy.get(Constants.EVENT_NAME);
+        eventDataCopy.remove(Constants.EVENT_NAME);
 
-        Intercom.client().logEvent(eventName, eventData);
+        Intercom.client().logEvent(eventName, eventDataCopy);
     }
 
     @Override
