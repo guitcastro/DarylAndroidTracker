@@ -11,6 +11,7 @@
       <module fileurl="file://$PROJECT_DIR$/firebase/firebase.iml" filepath="$PROJECT_DIR$/firebase/firebase.iml" />
       <module fileurl="file://$PROJECT_DIR$/googleanalytics/googleanalytics.iml" filepath="$PROJECT_DIR$/googleanalytics/googleanalytics.iml" />
       <module fileurl="file://$PROJECT_DIR$/intercom/intercom.iml" filepath="$PROJECT_DIR$/intercom/intercom.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mixpanel/mixpanel.iml" filepath="$PROJECT_DIR$/mixpanel/mixpanel.iml" />
     </modules>
   </component>
 </project>

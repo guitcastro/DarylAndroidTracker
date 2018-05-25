@@ -1,6 +1,8 @@
 package com.appprova.daryl.intercom;
 
 
+import android.os.Bundle;
+
 import com.appprova.daryl.Constants;
 import com.appprova.daryl.TrackerAdapter;
 
@@ -13,9 +15,17 @@ import io.intercom.android.sdk.identity.Registration;
 
 public class IntercomTracker implements TrackerAdapter {
 
+    private final Intercom client;
+
+    public IntercomTracker(Intercom client) {
+        this.client = client;
+    }
 
     @Override
     public void logPageView(String name) {
+        final Map<String, String> bundle = new HashMap<>();
+        bundle.put("pageName", name);
+        this.client.logEvent("pageView", bundle);
     }
 
     @Override
@@ -24,7 +34,7 @@ public class IntercomTracker implements TrackerAdapter {
         String eventName = (String) eventDataCopy.get(Constants.EVENT_NAME);
         eventDataCopy.remove(Constants.EVENT_NAME);
 
-        Intercom.client().logEvent(eventName, eventDataCopy);
+        this.client.logEvent(eventName, eventDataCopy);
     }
 
     @Override
@@ -48,7 +58,7 @@ public class IntercomTracker implements TrackerAdapter {
                 builder.withCustomAttribute(key, value.toString());
                 break;
         }
-        Intercom.client().updateUser(builder.build());
+        this.client.updateUser(builder.build());
     }
 
     @Override

@@ -1,35 +1,28 @@
-package com.appprova.daryl;
-
-import android.os.Bundle;
-
-import com.google.firebase.analytics.FirebaseAnalytics;
+package com.appprova.daryl.intercom;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.powermock.api.mockito.PowerMockito;
-import org.powermock.core.classloader.annotations.PrepareForTest;
-import org.powermock.modules.junit4.PowerMockRunner;
 
 import java.util.HashMap;
 
+import io.intercom.android.sdk.Intercom;
+
 import static com.appprova.daryl.Constants.EVENT_CATEGORY;
 import static com.appprova.daryl.Constants.EVENT_NAME;
-import static org.mockito.Matchers.any;
+import static org.mockito.Matchers.anyMap;
 import static org.mockito.Matchers.eq;
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
-@RunWith(PowerMockRunner.class)
-@PrepareForTest({FirebaseAnalytics.class})
-public class FirebaseTrackerTest {
+public class IntercomTrackerTest {
 
-    private FirebaseTracker subject;
-    private FirebaseAnalytics tracker;
+    private IntercomTracker subject;
+    private Intercom tracker;
 
     @Before
     public void setUp() {
-        this.tracker = PowerMockito.mock(FirebaseAnalytics.class);
-        this.subject = new FirebaseTracker(this.tracker);
+        this.tracker = mock(Intercom.class);
+        this.subject = new IntercomTracker(this.tracker);
     }
 
     @SuppressWarnings("unchecked")
@@ -45,7 +38,7 @@ public class FirebaseTrackerTest {
         this.subject.logEvent(eventValue);
         // Assert
 
-        verify(this.tracker).logEvent(eq("testName"), any(Bundle.class));
+        verify(this.tracker).logEvent(eq("testName"), anyMap());
     }
 
     @SuppressWarnings("unchecked")
@@ -56,7 +49,7 @@ public class FirebaseTrackerTest {
         this.subject.logPageView("test");
         // Assert
 
-        verify(this.tracker).logEvent(eq("pageView"), any(Bundle.class));
+        verify(this.tracker).logEvent(eq("pageView"), anyMap());
     }
 
 }

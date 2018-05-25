@@ -30,7 +30,7 @@ android {
 dependencies {
     implementation project(path: ':daryl')
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.facebook.android:facebook-android-sdk:4.33.0'
+    implementation "com.mixpanel.android:mixpanel-android:5.4.0"
     testImplementation 'org.mockito:mockito-all:1.10.19'
     testImplementation 'junit:junit:4.12'
 }

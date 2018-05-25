@@ -9,13 +9,14 @@ Use multiple analytics and other trackers in your Application easily
 * Facebook
 * Dito
 * Intercom
+* Mixpanel
 
 ## Installing 
 
 Just added the necessary SDKs to your gradle file:
 
 ```
-def darylVersion = '0.0.53'
+def darylVersion = '0.0.58'
 
 compile "com.appprova.daryl:daryl:$darylVersion"
 compile "com.appprova.daryl:googleanalytics:$darylVersion"
@@ -24,6 +25,7 @@ compile "com.appprova.daryl:firebase:$darylVersion"
 compile "com.appprova.daryl:facebook:$darylVersion"
 compile "com.appprova.daryl:dito:$darylVersion"
 compile "com.appprova.daryl:intercom:$darylVersion"
+compile "com.appprova.daryl:mixpanel:$darylVersion"
 ```
 
 ## Usages instructions
@@ -63,7 +65,15 @@ TrackerAdapter facebookTracker = new FacebookTracker(AppEventsLogger.newLogger(c
 #### Intercom
 
 ```
-TrackerAdapter intercomTracker = new IntercomTracker();
+TrackerAdapter intercomTracker = new IntercomTracker(Intercom.client());
+```
+
+#### Mixpanel
+
+```
+MixpanelAPI mixpanel =
+    MixpanelAPI.getInstance(context, MIXPANEL_TOKEN);
+TrackerAdapter mixpanelTracer = new MixpanelTracer(mixpanelApi);
 ```
 
 ### Registering multiple trackers
@@ -75,6 +85,7 @@ trackerAdapter.addTracker(googleAnalyticsTracker);
         trackerAdapter.addTracker(firebaseTracker);
         trackerAdapter.addTracker(facebookTracker);
         trackerAdapter.addTracker(intercomTracker);
+        trackerAdapter.addTracker(mixpanelTracker);
         if (!BuildConfig.DEBUG) {
             trackerAdapter.addTracker(crashlyticsLogTracker);
         }
@@ -106,7 +117,7 @@ trackerAdapter.logPageView("page name");
 Avaibles for : Firebase, CrashlyticsLog and Google Analytics
 
 ```
-trackerAdapter.logException(new Exeption("somthing went wrong"));
+trackerAdapter.logException(new Exception("something went wrong"));
 ```
 
 #### Logging user properties
